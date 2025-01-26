@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  app:
+    image: django5-docker:v1
+    build: .
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      - DATABASE_URL=postgresql://postgres:password@db:5432/mydatabase
+      - POSTGRES_DB=basedb 
+      - POSTGRES_USER=dev 
+      - POSTGRES_PASSWORD=dev@2025 
+      - POSTGRES_HOST=db
+      - POSTGRES_PORT=5432
+    volumes:
+      - .:/home/dev/app
+
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: dev
+      POSTGRES_PASSWORD: dev@2025
+      POSTGRES_DB: basedb
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:

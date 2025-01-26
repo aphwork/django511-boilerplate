@@ -1,0 +1,15 @@
+argcomplete==3.5.3
+asgiref==3.8.1
+click==8.1.8
+colorama==0.4.6
+Django==5.1.5
+mkl-service
+packaging
+pipx
+platformdirs
+setuptools
+sqlparse
+tzdata
+userpath
+wheel
+psycopg2-binary
